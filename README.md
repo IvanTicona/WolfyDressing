@@ -1,1 +1,1 @@
-# Repository for the Wolfy Dressing website
+# Wolfy Dressing Website Repository
