@@ -17,7 +17,8 @@ export const Home = () => {
           - Footer
       */}
       <Divider className="my-4" />
-      <div className="gap-6 p-5 mx-5 sm:mx-32 grid grid-cols-2 sm:grid-cols-4">
+      <h3 className="ml-5 sm:ml-32 text-xl font-bold">Productos Destacados</h3>
+      <div className="gap-6 py-5 mx-5 sm:mx-32 grid grid-cols-2 sm:grid-cols-4">
 
       {list.map((item, index) => (
         <Card shadow="sm" key={index*3} isPressable onPress={() => console.log("item pressed")}>
@@ -27,7 +28,7 @@ export const Home = () => {
               radius="lg"
               width="100%"
               alt={"Wolfy Item"}
-              className="w-full object-cover h-[140px]"
+              className="w-full object-cover h-100"
               src={fruit}
               />
           </CardBody>
