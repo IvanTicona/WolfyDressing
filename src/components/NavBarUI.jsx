@@ -9,17 +9,21 @@ import {
 } from "@nextui-org/react";
 import { Link, useLocation } from "react-router-dom";
 import { SearchInputUI } from "./SearchInputUI";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
 export const NavBarUI = () => {
 
-  let path = useLocation();
-  // location = path.pathname.split("/")[1];
+  const [location, setLocation] = useState('');
+  const currentPath = useLocation();
+
+  useEffect(() => {
+    setLocation(currentPath.pathname);
+  }, [currentPath]);
 
   return (
-    <Navbar shouldHideOnScroll isBordered classNames={{
+    <Navbar shouldHideOnScroll classNames={{
       item: [
         "flex",
         "relative",
@@ -37,37 +41,36 @@ export const NavBarUI = () => {
       ],
     }}>
       <NavbarBrand>
-        {/* <AcmeLogo /> */}
-        <Image src="/favicon.svg" alt="Wolfy" width={160} />
+        <Image src="/logosvg.svg" alt="Wolfy" width={160} />
         {/* <p className="font-bold text-inherit">ACME</p> */}
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem isActive>
+        <NavbarItem isActive={location === "/"}>
           <Link color="foreground" to="/">
             Home
           </Link>
         </NavbarItem>
 
-        <NavbarItem isActive>
+        <NavbarItem isActive={location === "/contact"}>
           <Link color="foreground" to="/contact">
             Contact
           </Link>
         </NavbarItem>
 
-        <NavbarItem isActive>
+        <NavbarItem isActive={location === "/offers"}>
           <Link color="foreground" to="/offers">
             Offers
           </Link>
         </NavbarItem>
 
-        <NavbarItem isActive>
+        <NavbarItem isActive={location === "/tracking"}>
           <Link color="foreground" to="/tracking">
             Tracking
           </Link>
         </NavbarItem>
 
-        <NavbarItem isActive>
+        <NavbarItem isActive={location === "/product"}>
           <Link color="foreground" to="/product">
             Product
           </Link>

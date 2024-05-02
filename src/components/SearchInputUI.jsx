@@ -1,7 +1,11 @@
 import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../Icons/SearchIcon";
+import { useState } from "react";
 
 export const SearchInputUI = () => {
+
+  const [value, setValue] = useState("");
+
   return (
     <Input
       classNames={{
@@ -15,6 +19,8 @@ export const SearchInputUI = () => {
       size="sm"
       startContent={<SearchIcon size={18} />}
       type="search"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
     />
   );
 };
