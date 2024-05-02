@@ -10,6 +10,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { SearchInputUI } from "./SearchInputUI";
 import { useEffect, useState } from "react";
+import { CartIcon } from "../Icons/CartIcon";
 
 
 
@@ -17,6 +18,17 @@ export const NavBarUI = () => {
 
   const [location, setLocation] = useState('');
   const currentPath = useLocation();
+
+  const menuItems = [
+    { name:"Home",path: "/" },
+    { name:"Contact",path: "/contact" },
+    { name:"Offers",path: "/offers" },
+    { name:"Tracking",path: "/tracking" },
+    { name:"Product",path: "/product" },
+    // { name:"Search",path: "/search" },
+    // { name:"Cart",path: "/cart" },
+    // { name:"Checkout",path: "/checkout" },
+  ];
 
   useEffect(() => {
     setLocation(currentPath.pathname);
@@ -39,58 +51,38 @@ export const NavBarUI = () => {
         "data-[active=true]:after:rounded-[1px]",
         "data-[active=true]:after:bg-primary",
       ],
+      wrapper: ["max-w-full","px-32"],
     }}>
       <NavbarBrand>
         <Image src="/logosvg.svg" alt="Wolfy" width={160} />
-        {/* <p className="font-bold text-inherit">ACME</p> */}
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem isActive={location === "/"}>
-          <Link color="foreground" to="/">
-            Home
-          </Link>
-        </NavbarItem>
-
-        <NavbarItem isActive={location === "/contact"}>
-          <Link color="foreground" to="/contact">
-            Contact
-          </Link>
-        </NavbarItem>
-
-        <NavbarItem isActive={location === "/offers"}>
-          <Link color="foreground" to="/offers">
-            Offers
-          </Link>
-        </NavbarItem>
-
-        <NavbarItem isActive={location === "/tracking"}>
-          <Link color="foreground" to="/tracking">
-            Tracking
-          </Link>
-        </NavbarItem>
-
-        <NavbarItem isActive={location === "/product"}>
-          <Link color="foreground" to="/product">
-            Product
-          </Link>
-        </NavbarItem>
+      <NavbarContent className="hidden sm:flex gap-4" justify="start">
+        {menuItems.map((item, index) => (
+          <NavbarItem className="" key={index*3} isActive={location === item.path}>
+            <Link color="foreground" to={item.path}>
+              {item.name}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
 
       <NavbarContent justify="end">
-        
         <SearchInputUI/>
 
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
+          <Button 
+            isIconOnly
+            as={Link}
+            className="w-16"
+            color="primary"
+            href="#"
+            variant="light">
+            <CartIcon/>
           </Button>
         </NavbarItem>
       </NavbarContent>
+
     </Navbar>
   );
 };

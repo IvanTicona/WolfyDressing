@@ -9,7 +9,7 @@ export const SearchInputUI = () => {
   return (
     <Input
       classNames={{
-        base: "max-w-full sm:max-w-[10rem] h-10",
+        base: "max-w-full sm:w-40 h-10",
         mainWrapper: "h-full",
         input: "text-small",
         inputWrapper:
