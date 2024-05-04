@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Card, CardBody, CardFooter, Divider, Image } from "@nextui-org/react"
 import fruit from '../images/fruit-2.jpeg'
 
@@ -16,9 +17,11 @@ export const Home = () => {
           - Productos vendidos
           - Footer
       */}
-      <Divider className="my-4" />
-      <h3 className="ml-5 sm:ml-32 text-xl font-bold">Productos Destacados</h3>
-      <div className="gap-6 py-5 mx-5 sm:mx-32 grid grid-cols-2 sm:grid-cols-4">
+      <Divider className="my-3" />
+
+      <h3 className="ml-5 my-3 sm:ml-32 text-xl font-bold">Productos Destacados</h3>
+
+      <div className="gap-6  mx-5 sm:mx-32 grid grid-cols-2 sm:grid-cols-4">
 
       {list.map((item, index) => (
         <Card shadow="sm" key={index*3} isPressable onPress={() => console.log("item pressed")}>

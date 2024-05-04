@@ -11,6 +11,17 @@ export default {
     extend: {},
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      themes: {
+        "wolfy":{
+          colors:{
+            background: "#e1e5e5",
+          
+          }
+        }
+      },
+    })
+  ],
 }
 
